@@ -1,13 +1,16 @@
 
 package sddd;
 
-public class Backtracking_Queen2 {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Backtracking_Queen4 {
 
 	static final int qCount = 8;
 
 	public static void SolveQueen(int[][] data) {
 		int count = 0, mode = 0;
-		int irow = 4,  icol =0 ;
+		int irow = 0, icol = 0;
 		ObjectStack st = new ObjectStack(10);
 		// 초기 0 ,0 위치에 퀸 설정
 
@@ -68,30 +71,30 @@ public class Backtracking_Queen2 {
 //			}
 //
 //		}
-		
-		int r =row;
-		while(true) {
+
+		int r = row;
+		while (true) {
 			r++;
-			if (r>=data.length) {
+			if (r >= data.length) {
 				break;
 			}
-			if(data[r][col] == 1) {
+			if (data[r][col] == 1) {
 				return false;
 			}
-			
+
 		}
-		
+
 		r = row;
-		while(true) {
+		while (true) {
 			r--;
-			if(r < 0) {
+			if (r < 0) {
 				break;
 			}
-			if(data[r][col] ==1) {
+			if (data[r][col] == 1) {
 				return false;
 			}
 		}
-		
+
 		return true;
 //		for (int r = 0; r < data.length; r++) {
 //			if (data[r][col] == 1) {
@@ -101,8 +104,7 @@ public class Backtracking_Queen2 {
 //		}
 //
 //		return true;
-		
-		
+
 	}
 
 	// 세로에 넣을 수 있는지
@@ -114,29 +116,29 @@ public class Backtracking_Queen2 {
 //
 //		}
 //		return true;
-		int c =col;
-		while(true) {
+		int c = col;
+		while (true) {
 			c++;
-			if (c>=data.length) {
+			if (c >= data.length) {
 				break;
 			}
-			if(data[row][c] == 1) {
+			if (data[row][c] == 1) {
 				return false;
 			}
-			
+
 		}
-		
+
 		c = col;
-		while(true) {
+		while (true) {
 			c--;
-			if(c < 0) {
+			if (c < 0) {
 				break;
 			}
-			if(data[row][c] ==1) {
+			if (data[row][c] == 1) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -211,8 +213,9 @@ public class Backtracking_Queen2 {
 
 	// 새로 들어갈 위치
 	public static boolean CheckMove(int[][] data, int row, int col) {
-		if ((checkRow(data, row, col) == true) && (checkCol(data, row,col) == true) && (checkDiagSW(data, row, col) == true)
-				&& (checkDiagSE(data, row, col) == true) && data[row][col] == 0) {
+		if ((checkRow(data, row, col) == true) && (checkCol(data, row, col) == true)
+				&& (checkDiagSW(data, row, col) == true) && (checkDiagSE(data, row, col) == true)
+				&& data[row][col] == 0) {
 			return true;
 		}
 		return false;// (x,y)로 이동 가능한지를 check
@@ -225,20 +228,46 @@ public class Backtracking_Queen2 {
 		return true;
 	}
 
+	public static ArrayList<int[][]> SolveQueen1(int[][] data) {
+		ArrayList<int[][]> result = new ArrayList<>();
+		result.add(data);
+		return result;
+
+	}
+
 	public static void main(String[] args) {
+
 //		int row = qCount, col = qCount;
 		int[][] data = new int[qCount][qCount];
+		ArrayList<int[][]> arr = SolveQueen1(data);
+		
+		while(true) {
+			
+			
+		};
+		
+		SolveQueen(data);
 //		for (int i = 0; i < data.length; i++)
 //			for (int j = 0; j < data[0].length; j++)
 //				data[i][j] = 0;
 
-		SolveQueen(data);
+		for (int[][] result : arr) {
+			for (int i = 0; i < result.length; i++) {
+				for (int j = 0; j < result[0].length; j++) {
+					System.out.print(" " + result[j][i]);
 
-		for (int i = 0; i < data.length; i++) {
-			for (int j = 0; j < data[0].length; j++) {
-				System.out.print(" " + data[j][i]);
+				}
+				System.out.println();
+
 			}
 			System.out.println();
 		}
+
+//		for (int i = 0; i < data.length; i++) {
+//			for (int j = 0; j < data[0].length; j++) {
+//				System.out.print(" " + data[j][i]);
+//			}
+//			System.out.println();
+//		}
 	}
 }
