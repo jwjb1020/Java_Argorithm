@@ -104,6 +104,7 @@ public class MazingProblem {
 //					}
 					//mark[i][j] = 2;
 					
+					
 					System.out.println("There is an exit"); // output path
 					return;
 				}
@@ -170,6 +171,9 @@ public class MazingProblem {
 //		현 좌표를 스택에서 Pop한다. Pop한 뒤의 Top이 현 위치가 된다. (1번으로 복귀)
 
 		// maze에 input에 넣은 값들을 복사
+		
+		
+		
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 15; j++) {
 				maze[i][j] = input[i][j];
