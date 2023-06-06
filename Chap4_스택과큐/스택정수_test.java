@@ -1,3 +1,4 @@
+package Chap4_스택과큐;
 //package Chap4_스택과큐;
 //
 //import java.util.Scanner;

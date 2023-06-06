@@ -26,50 +26,50 @@ public class MazingProblemCPP {
 		int[][] maze = new int[100][100];
 		int[][] mark = new int[100][100];
 
-//void path(int m, int p)
-////Output a path (if any) in the maze; rows is m, cols is p;
-//{
-//	//start at (1,1)
-//	mark[1][1] = 1;
-//	Stack<items> stack(m * p);
-//	items temp;
-//	temp.x = 1; temp.y = 1; temp.dir = E;
-//	stack.Push(temp);
-//
-//	while (!stack.IsEmpty()) // stack not empty
-//	{
-//		temp = stack.Pop(); // unstack
-//		int i = temp.x; int j = temp.y; int d = temp.dir;
-//		while (d < 8) // moves forward
-//		{
-//			//outFile << i << " " << j << " " << d << endl;
-//			int g = i + moves[d].a;
-//			int h = j + moves[d].b;
-//			if ((g == m) && (h == p)) { // reached exit
-//										// output path
-//				cout << stack;
-//
-//				cout << "the term near the exit: " << i << " " << j << endl;
-//				cout << "exit: " << m << " " << p << endl;
-//				return;
-//			}
-//			if ((!maze[g][h]) && (!mark[g][h])) { // new position
-//				mark[g][h] = 1;
-//				//push the old temp to the stack, but the direction changes.
-//				//Because the neighbor in the direction of d has been checked.
-//				temp.x = i;  temp.y = j; temp.dir = d + 1;
-//				stack.Push(temp); // stack it
-//				i = g; j = h; d = N; // moves to (g,h)
-//			}
-//			else d++; // try next direction
-//		}
-//	}
-//	cout << "no path in maze " << endl;
-//}
-///*
-//maze[][], mark[][]를 class의 private data member로 선언
-//main()에서는 class의 public function의 호출로 미로 찾기
-//*/
+void path(int m, int p)
+//Output a path (if any) in the maze; rows is m, cols is p;
+{
+	//start at (1,1)
+	mark[1][1] = 1;
+	Stack<items> stack(m * p);
+	items temp;
+	temp.x = 1; temp.y = 1; temp.dir = E;
+	stack.Push(temp);
+
+	while (!stack.IsEmpty()) // stack not empty
+	{
+		temp = stack.Pop(); // unstack
+		int i = temp.x; int j = temp.y; int d = temp.dir;
+		while (d < 8) // moves forward
+		{
+			//outFile << i << " " << j << " " << d << endl;
+			int g = i + moves[d].a;
+			int h = j + moves[d].b;
+			if ((g == m) && (h == p)) { // reached exit
+										// output path
+				cout << stack;
+
+				cout << "the term near the exit: " << i << " " << j << endl;
+				cout << "exit: " << m << " " << p << endl;
+				return;
+			}
+			if ((!maze[g][h]) && (!mark[g][h])) { // new position
+				mark[g][h] = 1;
+				//push the old temp to the stack, but the direction changes.
+				//Because the neighbor in the direction of d has been checked.
+				temp.x = i;  temp.y = j; temp.dir = d + 1;
+				stack.Push(temp); // stack it
+				i = g; j = h; d = N; // moves to (g,h)
+			}
+			else d++; // try next direction
+		}
+	}
+	cout << "no path in maze " << endl;
+}
+/*
+maze[][], mark[][]를 class의 private data member로 선언
+main()에서는 class의 public function의 호출로 미로 찾기
+*/
 //void main() {
 
 		int input[][] = { // 12 x 15

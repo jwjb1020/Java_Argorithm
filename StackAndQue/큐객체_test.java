@@ -1,4 +1,4 @@
-package Chap4_스택과큐;
+package StackAndQue;
 
 /*
  * Queue of ArrayList of Point

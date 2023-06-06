@@ -1,4 +1,4 @@
-package chap2_기본자료구조;
+package 기본자료구조;
 
 import java.util.Random;
 

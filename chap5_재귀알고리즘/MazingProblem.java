@@ -3,9 +3,9 @@ package chap5_재귀알고리즘;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Directions {
-	N, NE, E, SE, S, SW, W, NW
-}
+//enum Directions {
+//	N, NE, E, SE, S, SW, W, NW
+//}
 
 class Items {
 
@@ -17,6 +17,13 @@ class Items {
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
+
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return x + " " + y + " " + dir;
 	}
 }
 
@@ -39,19 +46,23 @@ class StackList {
 	public void push(Items item) {
 		arr.add(item);
 		top++;
+
 	}
 
 	public Items pop() {
-		if (top > 0) {
+		if (top >= 0) {
 			top--;
+
 			return arr.remove(top);
 		}
+
 		return null;
+		// 전에 저장된 값을 쓰기 위해
 
 	}
 
 	public boolean isEmpty() {
-		return top == 0;
+		return top <= 0;
 
 	}
 
@@ -64,45 +75,53 @@ public class MazingProblem {
 	public static void path(int[][] maze, int[][] mark, int ix, int iy) {
 		// 백트래킹 초기값
 
-		mark[ix-1][iy-1] = 2; // 출구
 		StackList st = new StackList(); // 스택 생성
 		Items temp = new Items(0, 0, 0); // 좌표와 방향 넣는 곳
 		// 초기값 설정 (입구)
 		temp.x = 0;
 		temp.y = 0;
 		temp.dir = 0;
-		mark[temp.x][temp.y] = 1;// 미로 찾기 궤적은 2로 표시
+		mark[temp.x][temp.y] = 2;// 미로 찾기 궤적은 2로 표시
 		st.push(temp);
 
 		while (!st.isEmpty()) // stack not empty
 		{
-			temp = st.pop();// unstack
+			Items tmp = st.pop();// unstack
 
-			int i = temp.x;
-			int j = temp.y;
-			int d = temp.dir;
-			mark[i][j] = 2;// backtracking 궤적은 1로 표시
+			int i = tmp.x;
+			int j = tmp.y;
+			int d = tmp.dir;
+			mark[i][j] = 1;// backtracking 궤적은 1로 표시
+
 			while (d < 8) // moves forward
 			{
 				int g = i + moves[d].a;
 				int h = j + moves[d].b;
 
 				if ((g == ix) && (h == iy)) { // reached exit
-					System.out.println("There is exit"); // output path
+//					while (!st.isEmpty()) {
+//
+//					}
+					//mark[i][j] = 2;
+					
+					
+					System.out.println("There is an exit"); // output path
 					return;
 				}
 				if ((g >= 0 && g < maze.length) && (h >= 0 && h < maze[0].length) && (maze[g][h] == 0)
 						&& (mark[g][h] == 0)) { // new position
-					Items newItem = new Items(g, h, d);
-					st.push(newItem);
+					// Items newItem = new Items(g, h, d);
+					// st.push(newItem);
+					mark[g][h] = 2;
+					st.push(new Items(i, j, d + 1));
 					i = g;
 					j = h;
-					mark[g][h] = 1;
-					d = 0;
-					continue;
 
+					d = 0;
+
+				} else {
+					d++;
 				}
-				d++;
 
 			}
 		}
@@ -152,6 +171,9 @@ public class MazingProblem {
 //		현 좌표를 스택에서 Pop한다. Pop한 뒤의 Top이 현 위치가 된다. (1번으로 복귀)
 
 		// maze에 input에 넣은 값들을 복사
+		
+		
+		
 		for (int i = 0; i < 12; i++) {
 			for (int j = 0; j < 15; j++) {
 				maze[i][j] = input[i][j];
@@ -175,7 +197,7 @@ public class MazingProblem {
 //			}
 //			System.out.println();
 //		}
-	
+
 		// 한번에 넣어서 값을 바로 정답이 나오도록
 		path(maze, mark, 12, 15);
 		System.out.println("mark::");
