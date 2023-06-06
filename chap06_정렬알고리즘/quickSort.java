@@ -34,6 +34,7 @@ public class quickSort {
 		if (pl < right) {
 			quickSort(a, pl, right);
 		}
+<<<<<<< HEAD
 
 	}
 
@@ -68,12 +69,19 @@ public class quickSort {
 			}
 		}
 	}
+=======
+	}
+	
+>>>>>>> e63065840459de02bec194e5345d359079dacbbc
 
 	public static void main(String[] args) {
 		Random random = new Random();
 		int nx = 5;
 		int[] x = new int[nx];
+<<<<<<< HEAD
 		// 재귀방법으로 풀기
+=======
+>>>>>>> e63065840459de02bec194e5345d359079dacbbc
 		for (int i = 0; i < nx; i++) {
 			x[i] = random.nextInt(10);
 		}
@@ -90,8 +98,11 @@ public class quickSort {
 
 		}
 
+<<<<<<< HEAD
 		// 스택을 이용해 비재귀적인 방법으로 풀기
 
+=======
+>>>>>>> e63065840459de02bec194e5345d359079dacbbc
 	}
 
 }
