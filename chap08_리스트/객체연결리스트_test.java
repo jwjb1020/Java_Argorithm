@@ -1,5 +1,5 @@
 
-package chap08_리스트;
+package Chap08_리스트;
 
 /*
  * 정수 리스트 > 객체 리스트: 2번째 실습 대상 

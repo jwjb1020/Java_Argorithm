@@ -1,5 +1,5 @@
 
-package chap08_리스트;
+package Chap08_리스트;
 
 import java.util.Comparator;
 import java.util.Scanner;

@@ -1,5 +1,4 @@
-package chap08_리스트;
-
+package Chap08_리스트;
 
 import java.util.Comparator;
 import java.util.Scanner;
@@ -54,28 +53,28 @@ class SimpleObject2 {
 	}
 }
 
-class Node3 {
+class Node4 {
 	SimpleObject2 data; // 데이터
-	Node3 llink; // 좌측포인터(앞쪽 노드에 대한 참조)
-	Node3 rlink; // 우측포인터(뒤쪽 노드에 대한 참조)
+	Node4 llink; // 좌측포인터(앞쪽 노드에 대한 참조)
+	Node4 rlink; // 우측포인터(뒤쪽 노드에 대한 참조)
 
 	// --- 생성자(constructor) ---//
-	Node3(SimpleObject2 so) {
+	Node4(SimpleObject2 so) {
 		this.data = so;
 		llink = rlink = this;
 	}
 
-	Node3() {
+	Node4() {
 		this.data = null;
 		llink = rlink = this;
 	}
 
-	Node3(String sno, String sname) {
+	Node4(String sno, String sname) {
 		data = new SimpleObject2(sno, sname);
 		llink = rlink = this;
 	}
 
-	public int compareNode(Node3 n2) {
+	public int compareNode(Node4 n2) {
 		SimpleObject2 so1 = this.data;
 		if (SimpleObject2.NO_ORDER.compare(so1, n2.data) < 0)
 			return -1;
@@ -87,11 +86,11 @@ class Node3 {
 }
 
 class DoubledLinkedList2 {
-	private Node3 first; // 머리 포인터(참조하는 곳은 더미노드)
+	private Node4 first; // 머리 포인터(참조하는 곳은 더미노드)
 
 // --- 생성자(constructor) ---//
 	public DoubledLinkedList2() {
-		first = new Node3(); // dummy(first) 노드를 생성
+		first = new Node4(); // dummy(first) 노드를 생성
 
 	}
 
@@ -107,7 +106,14 @@ class DoubledLinkedList2 {
 
 // --- 전체 노드 표시 ---//
 	public void show() {
-
+		Node4 p = first;
+		if (p == null) {
+			System.out.println("저장된 데이터 없음");
+		}
+		while (p != null) {
+			System.out.println("저장된 데이터 :" + p.data);
+			p = p.llink;
+		}
 	}
 
 // --- 올림차순으로 정렬이 되도록 insert ---//
